@@ -1,0 +1,17 @@
+---
+   name: my_first_playbook
+   hosts: slave
+   remote_user: root
+   tasks:
+     - name: install httpd
+       yum:
+            name: httpd
+            state: latest
+     - name: run httpd
+       service:
+               name: httpd
+               status: started
+     - name: create content
+       copy:
+            content: congrats demaj
+            dest: /var/www/html/index.html
